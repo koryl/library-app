@@ -1,6 +1,9 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
   <mat-toolbar-row>
-    <h1>Awesome Library</h1>
+    <a mat-button routerLink="">
+      <h1>Awesome Library</h1>
+    </a>
+    <mat-divider [inset]="true"></mat-divider>
     <div>
       <a mat-button routerLink="">
         <span>Home</span>

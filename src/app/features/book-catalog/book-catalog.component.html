@@ -1,1 +1,3 @@
-<p>book-catalog works!</p>
+<app-book-search (searchBookEvent)="bookSearchResult=$event"></app-book-search>
+
+<app-book-result-table [data]="bookSearchResult"></app-book-result-table>

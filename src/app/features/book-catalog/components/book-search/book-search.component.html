@@ -1,0 +1,19 @@
+<mat-toolbar color="accent">
+  <div class="container">
+    <form>
+      <div class="search-box">
+        <input [(ngModel)]="searchText"
+               autocomplete="off"
+               class="search-input"
+               matInput
+               name="search"
+               placeholder="Title, Author, ISBN..."
+               type="search"
+        >
+        <button (click)="search()" class="search-icon" type="submit">
+          <mat-icon aria-hidden="false" aria-label="Search icon">search</mat-icon>
+        </button>
+      </div>
+    </form>
+  </div>
+</mat-toolbar>
