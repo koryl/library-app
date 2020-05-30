@@ -14,9 +14,11 @@ export class BookSearchComponent implements OnInit {
     @Output() searchBookEvent = new EventEmitter<SearchBookResult>();
 
     searchText: string;
+    shouldShowLargeSearchPanel: boolean;
 
     constructor(private bookService: BookRestService, private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {
-        iconRegistry.addSvgIcon(
+        this.shouldShowLargeSearchPanel = true;
+        this.iconRegistry.addSvgIcon(
             'search',
             sanitizer.bypassSecurityTrustResourceUrl('src/assets/icons/search-black-18dp.svg'));
     }
@@ -25,11 +27,15 @@ export class BookSearchComponent implements OnInit {
     }
 
     search() {
+        this.minimizeSearchPanel();
         this.bookService.searchForBooks(this.searchText)
-            .subscribe(searchResult => {
-                console.log(searchResult);
-                this.searchBookEvent.emit(searchResult);
-            });
+            .subscribe(searchResult => this.searchBookEvent.emit(searchResult));
+    }
+
+    minimizeSearchPanel() {
+        if (this.shouldShowLargeSearchPanel) {
+            this.shouldShowLargeSearchPanel = false;
+        }
     }
 
 }
